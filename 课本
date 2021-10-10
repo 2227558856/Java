@@ -1,0 +1,29 @@
+1.                package study;
+
+                  public class data {
+                      public static void main(String a[]){
+                          //强制类型转换
+                          int A=100;
+                          long B=(long)A;
+                          double C=1.000011111111222;
+                          int D=(int)C;
+                          float E=(float)C;
+                          int F=10;
+                          float G=(float)F;
+                          //自动类型提升(int+double=double)
+                          //byte、char、short < int < long < float < double
+                          long H=A+B;
+                          double I=C+D+E;
+                          float J=F+G;
+                          System.out.println("A--"+A);
+                          System.out.println("B--"+B);
+                          System.out.println("C--"+C);
+                          System.out.println("D--"+D);
+                          System.out.println("E--"+E);
+                          System.out.println("F--"+F);
+                          System.out.println("G--"+G);
+                          System.out.println("H--"+H);
+                          System.out.println("I--"+I);
+                          System.out.println("J--"+J);
+                      }
+                  }
