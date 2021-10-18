@@ -93,3 +93,22 @@
                           Ben.p();
                       }
                   }
+
+
+
+3.                package study;
+
+                  public class Data {
+                      public static void main(String a[]){
+                          int A[]=new int[10];            //动态
+                          int B[]=new int[]{1,2,5,67};    //静态
+                          System.out.println(B.length);
+                          People people=new People();
+                          people.p();
+                      }
+                  }
+
+
+
+
+4.                
