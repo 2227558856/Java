@@ -27,3 +27,69 @@
                           System.out.println("J--"+J);
                       }
                   }
+
+
+
+
+2.                package study;
+
+                  class Student{
+                      private float weight;                                 //私有变量,在后续操作中无法访问
+                      private float sum(float a,float b){                   //私有方法,在后续操作中无法访问
+                          return a+b;
+                      }
+                      public float height;                                  //共有变量,在后续操作中可以访问
+                      public float sub(float a,float b){                    //共有方法,在后续操作中可以访问
+                          return a-b;
+                      }
+                      String name;                                          //友好变量,在后续操作中可以访问
+                      float bigger(float a,float b){                        //友好方法,在后续操作中可以访问
+                          if(a>b){
+                              return a;
+                          }
+                          return b;
+                      }
+                      protected String number;                              //受保护的变量,在后续操作中可以访问
+                      protected float smaller(float a,float b){             //受保护的方法,在后续操作中可以访问
+                          if(a<b){
+                              return a;
+                          }
+                          return b;
+                      }
+                  }
+
+                  class People{
+                      Student people=new Student();
+                      void p(){
+                          float r,l,v;
+                          people.height=160;
+                          r=people.sub(1,2);
+                          people.name="007";
+                          l=people.bigger(100,200);
+                          people.number="001";
+                          v=people.smaller(100,200);
+                          System.out.println(people.height);
+                          System.out.println(r);
+                          System.out.println(people.name);
+                          System.out.println(l);
+                          System.out.println(people.number);
+                          System.out.println(v);
+                      }
+                  }
+
+                  public class Class {
+                      public static void main(String args[]){
+                          Student Tom=new Student();
+                          People Ben=new People();
+                          float result;
+                          /*
+                          Tom.weight=100;
+                          result=Tom.sum(10,20);
+                          */
+                          Tom.height=170;
+                          result=Tom.sub(10,20);
+                          System.out.println(Tom.height);
+                          System.out.println(result);
+                          Ben.p();
+                      }
+                  }
