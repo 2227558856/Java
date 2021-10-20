@@ -157,4 +157,46 @@
 
 
 
-6.                
+6.                package study;
+
+                  class Village {
+                      static int TreeNum;                        //static可以使变量能直接用类名访问
+                      int PeopleNum;
+                      String Name;
+                      Village(String s){
+                          Name=s;
+                      }
+                      void TreePlant(int n){
+                          TreeNum+=n;
+                          System.out.println(Name+"植树"+n+"棵");
+                      }
+                      void TreeFell(int n){
+                          if(TreeNum-n>=0){
+                              TreeNum-=n;
+                              System.out.println(Name+"伐树"+n+"棵");
+                          }
+                          else{
+                              System.out.println("砍伐最后的"+TreeNum+"棵树后无树可伐!");
+                          }
+                      }
+                      static int LookTreeNum(){
+                          return TreeNum;
+                      }
+                      static void LookTree(){
+                          System.out.println("森林里有"+TreeNum+"棵树");
+                      }
+                      void PeopleAdd(int n){
+                          PeopleNum+=n;
+                          System.out.println(Name+"增加了"+n+"名村民");
+                      }
+                      void PeopleSub(int n){
+                          PeopleNum-=n;
+                          System.out.println(Name+"减少了"+n+"名村民");
+                      }
+                  }
+
+
+
+
+
+7.                
