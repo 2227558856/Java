@@ -132,4 +132,29 @@
 
 
 
-5.                               
+5.                package study;
+
+                  class Computer{
+                      int GetSum(int...x){                                 //可变参数,从第一个到最后一个参数都是int型,x视为一个数组
+                          int sum=0;
+                          for(int i=0;i<x.length;i++){
+                              sum+=x[i];
+                          }
+                          return sum;
+                      }
+                  }
+
+                  public class Example2 {
+                      public static void main(String args[]){
+                          Computer com=new Computer();
+                          int result=com.GetSum(100,123,123,34,53);   //使用方式
+                          System.out.println(result);
+                      }
+                  }
+               
+
+
+
+
+
+6.                
