@@ -111,4 +111,25 @@
 
 
 
-4.                
+4.               package study;
+
+                  /*
+                  Java中的基本类型不是面向对象的，它们只是纯粹的数据，除了数值本身的信息之外，基本类型数据不带有其他信息或者可操作方法。
+                  这在实际使用中存在很多不足，为了解决这个不足，* 对每个基本类型都对应了一个引用的类型*，称为装箱基本类型。
+                  */
+
+                  public class Example1 {
+                      public static void main(String args[]){
+                          Integer n=new Integer(100);                 //装箱:根据需要的数据类型创建对应的包装对象
+                          Double m=200d;                                    //自动装箱
+                          int N=n.intValue();                               //拆箱:将包装对象转换成基本数据类型
+                          double M=m;                                       //自动拆箱
+                          System.out.println(N);
+                          System.out.println(M);
+                      }
+                  }
+
+
+
+
+5.                               
