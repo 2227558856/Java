@@ -359,4 +359,40 @@
 
 
 
-9.                
+9.                package study;
+
+                  class University{
+                      void enterRule(double Math,double English,double Chinese){
+                          double total=Math+English+Chinese;
+                          if(total>=250){
+                              System.out.println(total+":分数到达大学录取线");
+                          }
+                          else{
+                              System.out.println(total+":分数未到达大学录取线");
+                          }
+                      }
+                  }
+
+                  class ImportantUniversity extends University{
+                      void enterRule(double Math,double English,double Chinese){          //方法重写,原方法(父类的方法)被隐藏
+                          double total=Math+English+Chinese;
+                          if(total>=350){
+                              System.out.println(total+":分数到达重点大学录取线");
+                          }
+                          else{
+                              System.out.println(total+":分数未到达重点大学录取线");
+                          }
+                      }
+                  }
+
+                  public class Example1 {
+                      public static void main(String args[]){
+                          double M=110,E=130,C=110;
+                          University student1=new University();
+                          ImportantUniversity student2=new ImportantUniversity();
+                          student1.enterRule(M,E,C);
+                          student2.enterRule(M,E,C);           //调用重写后的方法
+                      }
+                  }
+
+10.               
