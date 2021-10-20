@@ -199,4 +199,26 @@
 
 
 
-7.                
+7.                package study;
+
+                  public class Example3 {
+                      public static void main(String args[]){
+                          Village N=new Village("张庄");
+                          Village M=new Village("李庄");
+                          N.PeopleNum=100;
+                          M.PeopleNum=50;
+                          Village.TreeNum=500;
+                          int tree=Village.TreeNum;
+                          Village.LookTree();
+                          N.TreePlant(30);
+                          Village.LookTree();
+                          M.TreeFell(100);
+                          Village.LookTree();
+                          N.PeopleAdd(60);
+                          M.PeopleSub(20);
+                      }
+                  }
+
+
+
+8.                
