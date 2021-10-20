@@ -395,4 +395,35 @@
                       }
                   }
 
-10.               
+10.               package study;                               //JAVA类名和包名不区分大小写,class A和class a是一样的,会随机解析其中的一个
+
+                  class per{
+                      float weight,height;
+                      String name,ID;
+                      void speak(String s){
+                          System.out.println(s);
+                      }
+                  }
+
+                  class classmate extends per{
+                      double add(double a,double b){
+                          return a+b;
+                      }
+                  }
+
+                  public class Example4 {
+                      public static void main(String args[]){
+                          classmate Tom=new classmate();
+                          Tom.height=180;
+                          Tom.weight=60;
+                          Tom.name="汤姆";
+                          Tom.ID="007";
+                          Tom.speak("我是"+Tom.name+",我的身高是"+ Tom.height+"cm,我的体重是"+Tom.weight+"kg,代号"+Tom.ID+",很高兴认识你!");
+                          System.out.println(Tom.add(100,200));
+                      }
+                  }
+
+
+
+
+11.               
