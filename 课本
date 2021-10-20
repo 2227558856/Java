@@ -221,4 +221,142 @@
 
 
 
-8.                
+8.                package study;
+
+                  class Dept{
+                      int ID;
+                      String name,type,description;
+                      Dept(){}
+                      Dept(int ID,String name,String type){
+                          this.ID=ID;
+                          this.name=name;
+                          this.type=type;
+                      }
+                      void Getter(){
+                          System.out.println(ID);
+                          System.out.println(name);
+                          System.out.println(type);
+                          System.out.println(description);
+                      }
+                      void Setter(int ID,String name,String type,String description){
+                          this.ID=ID;
+                          this.name=name;
+                          this.type=type;
+                          this.description=description;
+                      }
+                  }
+
+                  class OutpatientDept extends Dept{
+                      String address;
+                      OutpatientDept(){}
+                      OutpatientDept(int ID,String name,String type,String description,String address){
+                          this.ID=ID;
+                          this.name=name;
+                          this.type=type;
+                          this.description=description;
+                          this.address=address;
+                      }
+                      void ToString(){
+                          System.out.println(ID);
+                          System.out.println(name);
+                          System.out.println(type);
+                          System.out.println(description);
+                          System.out.println(address);
+                      }
+                  }
+
+                  class InpatientDept extends Dept{
+                      String ward;
+                      InpatientDept(){}
+                      InpatientDept(int ID,String name,String type,String description,String ward){
+                          this.ID=ID;
+                          this.name=name;
+                          this.type=type;
+                          this.description=description;
+                          this.ward=ward;
+                      }
+                      void ToString(){
+                          System.out.println(ID);
+                          System.out.println(name);
+                          System.out.println(type);
+                          System.out.println(description);
+                          System.out.println(ward);
+                      }
+                  }
+
+                  class Hospital{
+                      OutpatientDept[] A=new OutpatientDept[20];
+                      InpatientDept[] B=new InpatientDept[20];
+                      int k1=0,k2=0;
+                      void addDept(int ID,String name,String type,String description,String choose){
+                          if(type=="门诊部"){
+                              A[k1]=new OutpatientDept(ID,name,type,description,choose);
+                              k1++;
+                          }
+                          else{
+                              B[k2]=new InpatientDept(ID,name,type,description,choose);
+                              k2++;
+                          }
+                      }
+                      void delDept(int ID,String type){
+                          if(type=="门诊部"){
+                              for(int i=0;i<k1;i++){
+                                  if(A[i].ID==ID){
+                                      for(int j=i+1;j<k1;j++){
+                                          A[j-1]=A[j];
+                                      }
+                                      k1--;
+                                      System.out.println("已删除门诊部"+ID+"号!");
+                                      return;
+                                  }
+                              }
+                              System.out.println("未在门诊部找到要删除的ID!");
+                          }
+                          else{
+                              for(int i=0;i<k2;i++){
+                                  if(B[i].ID==ID){
+                                      for(int j=i+1;j<k2;j++){
+                                          B[j-1]=B[j];
+                                      }
+                                      k2--;
+                                      System.out.println("已删除住院部"+ID+"号!");
+                                      return;
+                                  }
+                              }
+                              System.out.println("未在住院部找到要删除的ID!");
+                          }
+                      }
+                      void showDept(){
+                          for(int i=0;i<k1;i++){
+                              System.out.println("门诊部"+(i+1)+"号病人信息:");
+                              A[i].ToString();
+                              System.out.println();
+                          }
+                          for(int i=0;i<k2;i++){
+                              System.out.println("住院部"+(i+1)+"号病人信息:");
+                              B[i].ToString();
+                              System.out.println();
+                          }
+                      }
+                  }
+
+                  public class Example {
+                      public static void main(String args[]){
+                          Hospital hos=new Hospital();
+                          hos.addDept(2012,"小李","门诊部","感冒","门诊部一楼");
+                          hos.addDept(2004,"小刘","门诊部","发烧","门诊部一楼");
+                          hos.addDept(2025,"小黄","门诊部","呕吐","门诊部二楼");
+                          hos.addDept(2002,"小王","住院部","头疼","中区");
+                          hos.addDept(2037,"小季","住院部","摔伤","西区");
+                          hos.addDept(2053,"小张","住院部","骨折","东区");
+                          hos.showDept();
+                          hos.delDept(2012,"门诊部");
+                          System.out.println("删除后结果如下\n");
+                          hos.showDept();
+                      }
+                  }
+
+
+
+
+9.                
