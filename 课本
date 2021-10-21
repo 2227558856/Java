@@ -426,4 +426,33 @@
 
 
 
-11.               
+11.               package study;
+
+                  class A{
+                      float s(float x,float y){
+                          return x+y;
+                      }
+                      public int g(int x,int y){
+                          return x+y;
+                      }
+                  }
+
+                  class B extends A{
+                      float s(float x,float y){            //子类方法重写,但不能改变s的类型
+                          return x*y;                      // ---double s(float x,float y),则此时B中有两个同名s函数
+                      }
+                  }
+
+                  public class Example2 {
+                      public static void main(String args[]){
+                          B b=new B();
+                          System.out.println("方法重写:"+b.s(11,23));
+                          System.out.println("方法继承:"+b.g(11,23));
+                      }
+                  }
+
+
+
+
+
+12.               
