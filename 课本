@@ -455,4 +455,59 @@
 
 
 
-12.               
+12.               package study;
+
+                  class Bank{
+                      int saveMoney;
+                      int year;
+                      double interest;
+                      public double Interest(){
+                          interest=year*0.035*saveMoney;
+                          //System.out.printf("%d元存在银行%d年的利息是:%f元\n",saveMoney,year,interest);
+                          return interest;
+                      }
+                  }
+
+                  class FirstBank extends Bank{
+                      double year;                                 //隐藏了继承的year,通过调用super关键字使用被隐藏的year
+                      public double Interest(){                    //子类方法重写,原Interest被隐藏
+                          super.year=(int)year;                    //强制转换,得到整年
+                          double littleYear=year-super.year;            //得到小数部分的年
+                          int day=(int)(littleYear*365);
+                          interest=super.Interest()+day*0.0001*saveMoney;
+                          System.out.printf("%d元存在第一银行%d年零%d天的利息是:%f元\n",saveMoney,super.year,day,interest);
+                          return interest;
+                      }
+                  }
+
+                  class SecondBank extends Bank{
+                      double year;
+                      public double Interest(){
+                          super.year=(int)year;
+                          double littleYear=year-super.year;
+                          int day=(int)(littleYear*365);
+                          interest=super.Interest()+day*0.00012*saveMoney;
+                          System.out.printf("%d元存在第二银行%d年零%d天的利息是:%f元\n",saveMoney,super.year,day,interest);
+                          return interest;
+                      }
+                  }
+
+                  public class Example3 {
+                      public static void main(String args[]){
+                          int amount=200000;
+                          FirstBank bank1=new FirstBank();
+                          SecondBank bank2=new SecondBank();
+                          bank1.saveMoney=amount;
+                          bank1.year=10.23;
+                          bank2.saveMoney=amount;
+                          bank2.year=10.23;
+                          double interest1=bank1.Interest();
+                          double interest2=bank2.Interest();
+                          System.out.printf("两个银行利润相差%f元\n",interest1-interest2);
+                      }
+                  }
+
+
+
+
+13.               
