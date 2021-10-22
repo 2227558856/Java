@@ -760,4 +760,52 @@
 
 
 
-20.               
+20.               package study;
+
+                  abstract class Area{                       //抽象面积
+                      abstract double GetArea();
+                  }
+
+                  class Circle extends Area{
+                      double r;
+                      Circle(double r){
+                          this.r=r;
+                      }
+                      double GetArea(){                       //具体面积1
+                          return 3.14*r*r;
+                      }
+                  }
+
+                  class Rectangle extends Area{
+                      double a,b;
+                      Rectangle(int a,int b){
+                          this.a=a;
+                          this.b=b;
+                      }
+                      double GetArea(){                        //具体面积2
+                          return a*b;
+                      }
+                  }
+
+                  class Sum{
+                      double SumArea(Area...x){                //可变参数的使用
+                          double s=0;
+                          for(int i=0;i<x.length;i++){
+                              s+=x[i].GetArea();
+                          }
+                          return s;
+                      }
+                  }
+
+                  public class Example1 {
+                      public static void main(String ars[]){
+                          Sum sum=new Sum();
+                          double area=sum.SumArea(new Circle(9),new Rectangle(4,6),new Circle(4.2));
+                          System.out.println("面积和为:"+area);
+                      }
+                  }
+
+
+
+
+21.               
