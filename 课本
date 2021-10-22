@@ -541,4 +541,41 @@
 
 
 
-14.               
+14.               package study;
+
+                  class Num{
+                      final double PI=3.1415;                                        //final定义常量,不允许修改
+                      double GetArea(final double r){
+                          System.out.println("面积:"+PI*r*r);
+                          return PI*r*r;
+                      }
+                      final void speak(){
+                          System.out.println("你好?能看见我吗?");
+                      }
+                  }
+
+                  class Name extends Num{                                             //final类没有子类,不允许继承
+                      void speakAgain(){                                              //final方法智能被继承,不能被重写
+                          System.out.println("还能看见我吧?");
+                      }
+                  }
+
+                  public class Example5 {
+                      public static void main(String arg[]){
+                          Num A=new Num();
+                          Name B=new Name();
+                          //错误:A.PI=3.14;
+                          A.GetArea(12);
+                          B.GetArea(12);
+                          A.speak();
+                          B.speak();
+                          B.speakAgain();
+                      }
+                  }
+
+
+
+
+
+
+15.               
