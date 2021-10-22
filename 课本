@@ -704,4 +704,60 @@
 
 
 
-19.               
+19.               package study;
+
+                  abstract class Area{
+                      abstract double GetArea();               //定义抽象类和抽象方法
+                  }
+
+                  class newPillar{
+                      Area bottom;
+                      double height;
+                      newPillar(Area bottom,double height){
+                          this.bottom=bottom;
+                          this.height=height;
+                      }
+                      double GetVolume(){
+                          return bottom.GetArea()*height;     //将体积计算抽象为底面积*高,而底面积则由后续Area的子类重写方法计算
+                      }
+                  }
+
+                  class newCircle extends Area{
+                      double r;
+                      newCircle(double r){
+                          this.r=r;
+                      }
+                      double GetArea(){
+                          return 3.14*r*r;
+                      }
+                  }
+
+                  class newRectangle extends Area{
+                      double a,b;
+                      newRectangle(double a,double b){
+                          this.a=a;
+                          this.b=b;
+                      }
+                      double GetArea(){
+                          return a*b;
+                      }
+                  }
+
+                  public class Example10 {
+                      public static void main(String args[]){
+                          Area bottom;
+                          newPillar pillar;
+                          bottom=new newCircle(3);                           //上转型对象
+                          pillar=new newPillar(bottom,10);
+                          System.out.println("圆柱体积:"+pillar.GetVolume());
+                          bottom=new newRectangle(5,7);
+                          pillar=new newPillar(bottom,10);
+                          System.out.println("棱柱体积:"+pillar.GetVolume());
+                      }
+                  }
+
+
+
+
+
+20.               
