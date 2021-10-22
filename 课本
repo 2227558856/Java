@@ -578,4 +578,35 @@
 
 
 
-15.               
+15.               package study;
+
+                  class 类人猿{
+                      void crySpeak(String s){
+                          System.out.println(s);
+                      }
+                  }
+
+                  class 人 extends 类人猿{
+                      void count(int a,int b){
+                          System.out.println(a*b);
+                      }
+                      void crySpeak(String s){                   //重写后的方法
+                          System.out.println("***"+s+"***");
+                      }
+                  }
+
+                  public class Example6 {
+                      public static void main(String arg[]){
+                          类人猿 A=new 人();                      //即对象"人"的上转型对象,此时A不能使用"人"中新加入的方法或变量
+                          A.crySpeak("好好学习,天天向上!");     //同时会使用"人"中重写的方法,而不是父类中的原方法
+                          //A.count(10,12);
+                          人 B=(人)A;                             //把上转型对象强制转化为子类对象
+                          B.count(10,12);
+                      }
+                  }
+
+
+
+
+
+16.               
