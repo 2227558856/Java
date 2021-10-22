@@ -510,4 +510,35 @@
 
 
 
-13.               
+13.               package study;
+
+                  class Student{
+                      int ID;
+                      String name;
+                      Student(){}
+                      Student(int ID,String name){
+                          this.name=name;
+                          this.ID=ID;
+                          System.out.println("我的学号是:"+ID+",姓名是:"+name);
+                      }
+                  }
+
+                  class Students extends Student{
+                      boolean Marry;
+                      Students(int ID,String name,boolean Marry){
+                          super(ID,name);
+                          this.Marry=Marry;
+                          System.out.println("结婚情况:"+Marry);
+                      }
+                  }
+
+                  public class Example4 {
+                      public static void main(String a[]){
+                          Students people=new Students(2012,"小李",true);
+                      }
+                  }
+
+
+
+
+14.               
