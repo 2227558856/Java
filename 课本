@@ -668,4 +668,40 @@
 
 
 
-18.               
+18.               package study;
+
+                  class Circle{
+                      double r;
+                      Circle(double r){
+                          this.r=r;
+                      }
+                      double GetArea(){
+                          return 3.14*r*r;
+                      }
+                  }
+
+                  class Pillar{
+                      Circle bottom;
+                      double height;
+                      Pillar(Circle bottom,double height){
+                          this.bottom=bottom;
+                          this.height=height;
+                      }
+                      double GetVolume(){
+                          return bottom.GetArea()*height;
+                      }
+                  }
+
+                  public class Example9 {
+                      public static void main(String ars[]){
+                          Circle A=new Circle(3);
+                          Pillar B=new Pillar(A,10);
+                          System.out.println(B.GetVolume());
+                      }
+                  }
+
+
+
+
+
+19.               
