@@ -640,4 +640,32 @@
 
 
 
-17.               
+17.               package study;
+
+                  abstract class First{
+                      abstract int sum(int a,int b);                //abstract方法只有声明,没有实现
+                      int sub(int a,int b){
+                          return a-b;
+                      }
+                  }
+
+                  class Second extends First{                       //类 "Second" 必须声明为抽象，或为实现 "First" 中的抽象方法 "sum(int, int)"
+                      int sum(int a,int b){
+                          return a+b;                               //重写abstract方法
+                      }
+                  }
+
+                  public class Example8 {
+                      public static void main(String args[]){
+                          //First A=new First();                    //'First' 为 abstract；无法实例化
+                          Second B=new Second();
+                          System.out.println("sum="+B.sum(11,25));
+                          System.out.println("sub="+B.sub(124,45));
+                      }
+                  }
+
+
+
+
+
+18.               
