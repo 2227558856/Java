@@ -887,4 +887,37 @@
 
 
 
-23.               
+23.               package study;
+
+                  interface Average{
+                      public abstract double average(double a,double b);
+                  }
+
+                  class A implements Average{
+                      public double average(double a,double b){
+                          return (a+b)/2;
+                      }
+                  }
+
+                  class B implements Average{
+                      public double average(double a,double b){
+                          return Math.sqrt(a*b);                                //Math方法
+                      }
+                  }
+
+                  public class Example4 {
+                      public static void main(String args[]){
+                          Average a;                                            //接口多态,同一接口的不同实现
+                          double x=12.2,y=39;
+                          a=new A();
+                          System.out.printf("%5.2f和%5.2f的算数平均值:%5.2f\n",x,y,a.average(x,y));
+                          a=new B();
+                          System.out.printf("%5.2f和%5.2f的几何平均值:%5.2f\n",x,y,a.average(x,y));
+                      }
+                  }
+
+
+
+
+
+24.               
