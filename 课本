@@ -997,4 +997,47 @@
 
 
 
-26.               
+26.               package study;
+
+                  interface Advertise{
+                      void ShowAdvertise();
+                      String GetName();
+                  }
+
+                  class AdvertiseBoard{
+                      void Show(Advertise a){
+                          System.out.println(a.GetName()+"的广告词如下:");
+                          a.ShowAdvertise();
+                      }
+                  }
+
+                  class CropA implements Advertise{
+                      public void ShowAdvertise(){
+                          System.out.println("好好学习,天天向上!!!");
+                      }
+                      public String GetName(){
+                          return "步步高";
+                      }
+                  }
+
+                  class CropB implements Advertise{
+                      public void ShowAdvertise(){
+                          System.out.println("生前何必久睡,死后自会长眠~~");
+                      }
+                      public String GetName(){
+                          return "清凉油";
+                      }
+                  }
+
+                  public class Example6 {
+                      public static void main(String args[]){
+                          AdvertiseBoard a=new AdvertiseBoard();
+                          a.Show(new CropA());
+                          a.Show(new CropB());
+                      }
+                  }
+
+
+
+
+27.               
