@@ -1040,4 +1040,54 @@
 
 
 
-27.               
+27.               package study;
+
+                  interface DogState{
+                      void ShowState();
+                  }
+
+                  class Dog{
+                      DogState state;
+                      void setState(DogState state){
+                          this.state=state;
+                      }
+                      void Cry(){
+                          state.ShowState();
+                      }
+                  }
+
+                  class Dog1 implements DogState{
+                      public void ShowState(){
+                          System.out.println("高兴:摇尾巴~~");
+                      }
+                  }
+
+                  class Dog2 implements DogState{
+                      public void ShowState(){
+                          System.out.println("生气:大叫~~");
+                      }
+                  }
+
+                  class Dog3 implements DogState{
+                      public void ShowState(){
+                          System.out.println("害怕:夹着尾巴~~");
+                      }
+                  }
+
+                  public class Example7 {
+                      public static void main(String arf[]){
+                          Dog dog=new Dog();
+                          dog.setState(new Dog1());
+                          dog.Cry();
+                          dog.setState(new Dog2());
+                          dog.Cry();
+                          dog.setState(new Dog3());
+                          dog.Cry();
+                      }
+                  }
+
+
+
+
+
+28.               
