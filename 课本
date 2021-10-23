@@ -1090,4 +1090,78 @@
 
 
 
-28.               
+28.               package study;
+
+                  import java.io.UnsupportedEncodingException;
+                  import java.nio.charset.StandardCharsets;
+                  import java.util.Locale;
+
+                  public class Example1 {
+                      public static void main(String args[]){
+                          String s="I like sleeping!";
+                          System.out.println(s.charAt(3));
+                          //s.charAt() 方法用于返回指定索引处的字符。索引范围为从 0 到 length() - 1
+                          System.out.println(s.length());
+                          //s.length() 方法计算字符串s长度
+                          String q="I like studying!";
+                          System.out.println(s.equals(q));
+                          //s.equals(q) 方法用于比较s和q是否相同
+                          System.out.println(s.equalsIgnoreCase(q));
+                          //s.equalsIgnoreCase(q) 方法用于比较s和q是否相同,忽略大小写
+                          System.out.println(s.startsWith("I like"));
+                          //s.startsWith("I like") 方法用于判断s的前缀是否为"I like"
+                          System.out.println(s.endsWith("studying!"));
+                          //s.endsWith("studying!") 方法用于判断s的后缀是否为"studying!"
+                          System.out.println(s.compareTo(q));
+                          //s.compareTo(q) 方法用于比较s和q,s==q,0;s>q,返回正值;s<q,返回负值
+                          System.out.println(s.compareToIgnoreCase("I"));
+                          //s.compareToIgnoreCase("I") 方法也用于比较s和"I",但忽略大小写
+                          System.out.println(s.concat("What about you?"));
+                          //s.concat("What about you?") 方法用于在s后加上字符串"What about you?"
+                          System.out.println(s.contains("lik"));
+                          //s.contains("lik") 方法用于判断s中是否含有"lik"字符串
+                          System.out.println(s.indexOf("li"));
+                          //s.contains("li") 方法用于从头检索s中是否出现"li"字符串,返回其首次出现的位置
+                          System.out.println(s.indexOf("li",4));
+                          //s.contains("li",4) 方法用于从第四位开始检索s中是否出现"li"字符串,返回其首次出现的位置
+                          System.out.println(s.lastIndexOf("li"));
+                          //s.contains("li") 方法用于检索s中是否出现"li"字符串,返回其最后出现的位置
+                          System.out.println(s.substring(3));
+                          //s.substring(3) 方法用于得到从s的第三位处开始截取到最后得到的子串
+                          System.out.println(s.substring(2,4));
+                          //s.substring(2,4) 方法用于得到从s的第二位处开始截取到第四位处得到的子串(不包括第四位)
+                          System.out.println("   我 爱 睡 觉   ".trim());
+                          //"   我 爱 睡 觉   ".trim() 方法用于得到"   我 爱 睡 觉   "去掉前后空格的字符串
+                          System.out.println(s.replace("like","dislike"));
+                          //s.replace("like","dislike") 方法用于将s中like替换为dislike
+                          System.out.println(s.replaceAll("[\\s]","*"));
+                          //s.replaceAll("[\\s]","*") 方法用于将s中用正则表达式表达的一部分字符替换为后面的字符串
+                          byte a[]=s.getBytes();
+                          //s.getBytes() 方法用于将s使用平台默认编码转化为一个字节数组
+                          String b=new String(a,0,a.length);
+                          //将字节数组又转化为字符串
+                          System.out.println(a);
+                          System.out.println(b);
+                          //输出查看
+                          try {
+                              System.out.println(s.getBytes("GB2312"));
+                          } catch (UnsupportedEncodingException e) {
+                              e.printStackTrace();
+                          }
+                          //s.getBytes("GB2312") 方法用于将s使用指定编码转化为一个字节数组,要在try-catch语句中调用
+                          String out[]=s.split("\\s");
+                          for(int i=0;i<out.length;i++){
+                              System.out.println(out[i]);
+                          }
+                          //s.split("\\s") 方法用于将s按空格分开,并将分开后的字符串存储在字符串数组中
+                          System.out.println(s.toLowerCase());
+                          //toLowerCase() 方法将字符串转换为小写
+                          System.out.println(s.toUpperCase());
+                          //s.toUpperCase() 方法将字符串转换为大写
+                      }
+                  }
+
+
+
+
+29.               
