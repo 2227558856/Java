@@ -808,4 +808,48 @@
 
 
 
-21.               
+21.               package study;
+
+                  interface Computer{                         //interface定义接口
+                      public int Max=10;
+                      public abstract int sum(int a);         //接口中只允许有常量和抽象方法,分别用public和public abstract修饰,可省略
+                  }
+
+                  class One implements Computer{              //用implements将接口引入非抽象类中实现(抽象类则不一定实现)
+                      int ID;
+                      public int sum(int a){                  //记住要用public修饰
+                          int s=0;
+                          for(int i=1;i<=a;i++){
+                              s+=i;
+                          }
+                          return s;
+                      }
+                  }
+
+                  class Two implements Computer{
+                      int ID;
+                      public int sum(int a){
+                          int s=1;
+                          for(int i=2;i<=a;i++){
+                              s=s*i;
+                          }
+                          return s;
+                      }
+                  }
+
+                  public class Example2 {
+                      public static void main(String args[]){
+                          One a=new One();
+                          Two b=new Two();
+                          a.ID=202012+Computer.Max;
+                          b.ID=202141+Computer.Max;
+                          System.out.println("小a的学号是:"+a.ID+",他的求和结果是:"+a.sum(20));
+                          System.out.println("小b的学号是:"+b.ID+",他的求积结果是:"+b.sum(10));
+                      }
+                  }
+
+
+
+
+
+22.               
