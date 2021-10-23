@@ -852,4 +852,39 @@
 
 
 
-22.               
+22.               package study;
+
+                  interface ShowMessage{
+                      void Show(String S);
+                  }
+
+                  class TV implements ShowMessage{
+                      public void Show(String S){
+                          System.out.println(S);
+                      }
+                      int sum(int a,int b){
+                          return a+b;
+                      }
+                  }
+
+                  class PC implements ShowMessage{
+                      public void Show(String S){
+                          System.out.println(S);
+                      }
+                  }
+
+                  public class Example3 {
+                      public static void main(String ats[]){
+                          ShowMessage a;                               //接口变量
+                          a=new TV();                                  //接口回调
+                          a.Show("喜马拉雅电视机");                   //可以使用类实现的接口方法,但不能使用类原本的方法
+                          //a.sum(10,20);
+                          a=new PC();
+                          a.Show("MacBook");
+                      }
+                  }
+
+
+
+
+23.               
