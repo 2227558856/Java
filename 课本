@@ -961,4 +961,40 @@
 
 
 
-25.               
+25.               package study;
+
+                  interface SpeakHello{
+                      public abstract void speak();
+                  }
+
+                  class Chinese implements SpeakHello{
+                      public void speak(){
+                          System.out.println("中国问候:你好,吃饭了吗?");
+                      }
+                  }
+
+                  class English implements SpeakHello{
+                      public void speak(){
+                          System.out.println("英国问候:你好,今天天气不错.");
+                      }
+                  }
+
+                  class Hello{
+                      void hello(SpeakHello a){             //接口变量做参数
+                          a.speak();
+                      }
+                  }
+
+                  public class Example5 {
+                      public static void main(String args[]){
+                          Hello people=new Hello();
+                          people.hello(new Chinese());      //省去步骤:SpeakHello a;  a=new Chinese();  people.hello(a);
+                          people.hello(new English());
+                      }
+                  }
+
+
+
+
+
+26.               
