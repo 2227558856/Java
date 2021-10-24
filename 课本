@@ -1202,4 +1202,63 @@
 
 
 
-31.               
+31.               package study;
+
+                  import java.util.ArrayList;
+                  import java.util.concurrent.locks.StampedLock;
+
+                  class Student{                                      //JavaBean规范:private定义变量,public set+get使用变量
+                      private String name;
+                      private String ID;
+                      private String sex;
+                      private int age;
+                      public void setName(String name){
+                          this.name=name;
+                      }
+                      public void setID(String ID){
+                          this.ID=ID;
+                      }
+                      public void setSex(String sex){
+                          this.sex=sex;
+                      }
+                      public void setAge(int age){
+                          this.age=age;
+                      }
+                      public String getName(){
+                          return name;
+                      }
+                      public String getID(){
+                          return ID;
+                      }
+                      public String getSex(){
+                          return sex;
+                      }
+                      public int getAge(){
+                          return age;
+                      }
+                      public String toString(){
+                          String result="{姓名:"+getName()+"学号"+getID()+"性别"+getSex()+"年龄"+getAge()+"}\n";
+                          return result;
+                      }
+                  }
+
+                  public class Example4 {
+                      public static void main(String[] args){
+                          ArrayList<Student> students=new ArrayList<>();
+                          Student A=new Student();
+                          Student B=new Student();
+                          Student C=new Student();
+                          A.setName("小李");A.setID("10085");A.setSex("男");A.setAge(18);      //构建学生数据
+                          B.setName("小刘");B.setID("10086");B.setSex("女");B.setAge(20);
+                          C.setName("小黄");C.setID("10087");C.setSex("男");C.setAge(22);
+                          students.add(A);
+                          students.add(B);
+                          students.add(C);
+                          System.out.println(students.toString());
+                      }
+                  }
+
+
+
+
+32.               
