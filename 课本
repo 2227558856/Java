@@ -1424,4 +1424,91 @@
 
 
 
-35.               
+35.               package study;
+
+                  import java.util.ArrayList;
+                  import java.util.Random;
+
+                  class People{
+                      private String name;
+                      private int ID;
+                      private int Year;
+                      private int age;
+                      public void setName(String name){
+                          this.name=name;
+                      }
+                      public void setID(int ID){
+                          this.ID=ID;
+                      }
+                      public void setYear(int Year){
+                          this.Year=Year;
+                      }
+                      public void setAge(int age){
+                          this.age=age;
+                      }
+                      public String getName(){
+                          return name;
+                      }
+                      public int getID(){
+                          return ID;
+                      }
+                      public int getYear(){
+                          return Year;
+                      }
+                      public int getAge(){
+                          return age;
+                      }
+                      public String toString(){                                    //toString方法重写
+                          String result="{姓名:"+getName()+"  学号"+getID()+"  入学年份"+getYear()+"  年龄"+getAge()+"}\n";
+                          return result;
+                      }
+                  }
+
+                  public class ExampleA {
+                      public static void main(String[] args){
+                          ArrayList<People> students=new ArrayList<>(10);
+                          for(int k=0;k<10;k++){                                       //十次循环,每次把创建的student对象放入ArrayList重
+                              People A=new People();
+                              Random num=new Random();
+                              char[] name=new char[5];
+                              for(int i=0;i<5;i++) {
+                                  name[i]=(char)(num.nextInt(26)+97);           //把97~122的随机小写字母放入字符数组中
+                              }
+                              A.setName(new String(name));
+                              A.setYear(num.nextInt(6)+2016);                    //生成2016~2021的随机年份
+                              A.setAge(A.getYear()-1994);
+                              int order=1;
+                              for(int i=0;i<k;i++){                                    //在当前已经生成的学生数据中进行查找,判断当年的入学顺序
+                                  if(A.getYear()==students.get(i).getYear()) {
+                                      order++;
+                                  }                                                     //否则该生为当年第一个入学的学生
+                              }
+                              A.setID(A.getYear()*10+order);                            //学号=年份+该年份入学顺序
+                              students.add(A);                                          //将学生数据加入ArrayList中
+                          }
+
+                          //加入数据完成,开始循环按年份输出信息
+                          //System.out.println(students.toString());
+
+                          for(int j=0;j<6;j++){                                         //6年,进行6次循环查找输出
+                              int beginYear=2016+j;                                     //从2016年开始对每年进行查找入学人数并输出
+                              int result=0;
+                              for(int k=0;k<10;k++){
+                                  if(students.get(k).getYear()==beginYear) {
+                                      result++;
+                                  }
+                              }
+                              System.out.println(beginYear+":"+result);
+                              for(int k=0;k<10;k++){
+                                  if(students.get(k).getYear()==beginYear) {
+                                      System.out.print(students.get(k).toString());
+                                  }
+                              }
+                          }
+                      }
+                  }
+
+
+
+
+36.               
