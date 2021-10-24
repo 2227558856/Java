@@ -1172,7 +1172,7 @@
                           Random r=new Random();
                           for(int i=0;i<4;i++){
                               int num=r.nextInt(26);                    //生成0~25的随机数
-                              char result=(char)(num+97);                      //随机数加上97得到97~122的数,将其强制转换为char类型,得到小写字母a~z
+                              char result=(char)(num+97);               //随机数加上97得到97~122的数,将其强制转换为char类型,得到小写字母a~z
                               System.out.print(result);
                           }
                       }
@@ -1181,4 +1181,25 @@
 
 
 
-30.               
+30.               package study;
+
+                  public class Example2 {
+                      public static void main(String args[]){
+                          int n=9;
+                          for(int i=1;i<=n;i++){                        //输出n排
+                              for(int k=1;k<=n-i;k++){                  //每一排前空格个数
+                                  System.out.print(" ");
+                              }
+                              for(int j=1;j<=2*(i-1)+1;j++){            //每一排*的个数
+                                  System.out.print("*");
+                              }
+                              System.out.println();
+                          }
+                      }
+                  }
+
+
+
+
+
+31.               
