@@ -1261,4 +1261,27 @@
 
 
 
-32.               
+32.               package study;
+
+                  import java.text.SimpleDateFormat;
+                  import java.util.Calendar;
+                  import java.util.Date;
+
+                  public class ExampleB {
+                      public static void main(String[] args){
+                          SimpleDateFormat d=new SimpleDateFormat("yyyy年MM月dd日");         //格式化时间
+                          Calendar now=Calendar.getInstance();                                      //获取当前日历
+                          //Date date=new Date();
+                          System.out.println("今天是:");
+                          System.out.println(d.format(now.getTime()));                              //输出当前日期
+                          //System.out.println(d.format(date));
+                          System.out.println("150天后是:");
+                          now.add(Calendar.DATE,150);                                       //日期延后150天
+                          System.out.println(d.format(now.getTime()));                              //输出150天后的日期
+                      }
+                  }
+
+
+
+
+33.               
