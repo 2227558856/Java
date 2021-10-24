@@ -1164,4 +1164,21 @@
 
 
 
-29.               
+29.               package study;
+                  import java.util.Random;
+
+                  public class Example3 {
+                      public static void main(String args[]){
+                          Random r=new Random();
+                          for(int i=0;i<4;i++){
+                              int num=r.nextInt(26);                    //生成0~25的随机数
+                              char result=(char)(num+97);                      //随机数加上97得到97~122的数,将其强制转换为char类型,得到小写字母a~z
+                              System.out.print(result);
+                          }
+                      }
+                  }
+
+
+
+
+30.               
