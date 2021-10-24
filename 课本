@@ -1284,4 +1284,63 @@
 
 
 
-33.               
+33.               package study;
+
+                  interface Computer{
+                      void MyComputer();
+                      public abstract void Get();
+                  }
+
+                  class HP implements Computer{
+                      public void MyComputer(){
+                          System.out.println("惠普电脑:");
+                      }
+                      public void Get(){
+                          System.out.println("显卡:A1");
+                          System.out.println("内存:A2");
+                          System.out.println("CPU:A3");
+                      }
+                  }
+
+                  class Lenovo implements Computer{
+                      public void MyComputer(){
+                          System.out.println("联想电脑:");
+                      }
+                      public void Get(){
+                          System.out.println("显卡:B1");
+                          System.out.println("内存:B2");
+                          System.out.println("CPU:B3");
+                      }
+                  }
+
+                  class Apple implements Computer{
+                      public void MyComputer(){
+                          System.out.println("苹果电脑:");
+                      }
+                      public void Get(){
+                          System.out.println("显卡:C1");
+                          System.out.println("内存:C2");
+                          System.out.println("CPU:C3");
+                      }
+                  }
+
+                  class AllComputer{
+                      void Out(Computer com){                       //接口变量做参数
+                          com.MyComputer();
+                          com.Get();
+                      }
+                  }
+
+                  public class ExampleA {
+                      public static void main(String[] args){
+                          AllComputer Mine=new AllComputer();
+                          Mine.Out(new HP());
+                          Mine.Out(new Lenovo());
+                          Mine.Out(new Apple());
+                      }
+                  }
+
+
+
+
+34.               
