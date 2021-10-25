@@ -1511,4 +1511,53 @@
 
 
 
-36.               
+36.               package study;
+
+                  import java.sql.Connection;
+                  import java.sql.DriverManager;
+                  import java.sql.ResultSet;
+                  import java.sql.Statement;
+
+                  public class Example1 {
+                      public static void main(String[] args) {
+                          String URL="jdbc:mysql://localhost:3306/abc";            //mysql> show databases;查看MySQL含有的数据库,选择其中一个连接
+                          String UserName="CaoQian";                               //用户名
+                          String PassWord="cq2227558856";                          //密码
+                          String tableName="select * from classa";                 //定义要查找的表
+                          try{
+                              // 加载数据库驱动类
+                              Class.forName("com.mysql.cj.jdbc.Driver");
+                              System.out.println("数据库驱动加载成功");
+                              // 获取数据库连接对象
+                              Connection con=null;
+                              con=DriverManager.getConnection(URL,UserName,PassWord);
+                              if(con!=null){
+                                  System.out.println("数据库连接成功");
+                              }
+                              /*
+                              构造一个statement对象来执行sql语句：主要有Statement，PreparedStatement，CallableStatement三种实例来实现
+                              Statement stmt = con.createStatement() ;
+                              PreparedStatement pstmt = conn.prepareStatement(sql) ;
+                              CallableStatement cstmt = conn.prepareCall("{CALL demoSp(? , ?)}") ;
+                              */
+                              String sql = "insert into classa(ID,name,age)"
+                                      + " values ('10120', 'B', '20')"; // 插入数据的sql语句
+                              Statement st=con.createStatement();  // 创建用于执行静态sql语句的Statement对象
+                              int count = st.executeUpdate(sql); // 执行插入操作的sql语句，并返回插入数据的个数
+                              System.out.println("向表中插入了 " + count + " 条数据"); //输出插入操作的处理结果
+                              ResultSet rs=st.executeQuery(tableName);
+                              //遍历结果集rs
+                              while(rs.next()){
+                                  System.out.println("学号:"+rs.getString("ID")+"姓名:"+rs.getString("name")+"年龄:"+rs.getString("age"));
+                              }
+                          } catch (Exception e){
+                              e.printStackTrace();
+                          }
+
+                      }
+                  }
+
+
+
+
+37.               
