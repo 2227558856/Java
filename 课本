@@ -1845,4 +1845,41 @@
 
 
 
-42.                 
+42.                 package hospital.test;
+
+                    import hospital.factory.DaoFactory;
+                    import hospital.vo.Patient;
+
+                    import java.util.Iterator;
+                    import java.util.List;
+                    import java.util.Scanner;
+
+                    /**
+                     * @author 测试功能
+                     */
+                    public class Test {
+                        public static void main(String[] args) throws Exception{
+                            Patient patient=new Patient();
+                            patient.setId("10001");
+                            patient.setName("小李");
+                            patient.setAge("19");
+                            patient.setDisease("头疼");
+                            patient.setPart("脑科");
+                            boolean result1=DaoFactory.getPatientDaoInstance().addPatient(patient);
+                            System.out.println(result1);
+                            List<Patient> all=DaoFactory.getPatientDaoInstance().findPatient("18");
+                            Iterator<Patient> iterator = all.iterator();
+                            while (iterator.hasNext()) {
+                                Patient p = iterator.next();
+                                System.out.println(p.getId() + "  " + p.getName()
+                                        + "  " + p.getAge()+"  "+p.getDisease()+"  "+p.getPart());
+                            }
+                            boolean result2=DaoFactory.getPatientDaoInstance().deletePatient("20201101");
+                            System.out.println(result2);
+                        }
+                    }
+
+
+
+
+43.                 
