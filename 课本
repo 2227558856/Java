@@ -1827,4 +1827,22 @@
 
 
 
-41.                 
+41.                 package hospital.factory;
+
+                    import hospital.dao.PatientDao;
+                    import hospital.dao.proxy.PatientDaoProxy;
+
+                    /**
+                     * @author 取得DAO实例
+                     * 直接返回DAO接口的实例化对象，以后客户端直接通过工厂类就可以取得DAO接口的实例化对象
+                     */
+                    public class DaoFactory {
+                        public static PatientDao getPatientDaoInstance() throws Exception{
+                            //返回代理实例
+                            return new PatientDaoProxy();
+                        }
+                    }
+
+
+
+42.                 
