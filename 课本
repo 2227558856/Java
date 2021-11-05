@@ -1771,4 +1771,60 @@
 
 
 
-40.                 
+40.                 package hospital.dbc;
+
+                    import java.sql.*;
+
+                    /**
+                     * @author 数据库连接
+                     */
+                    public class DatabaseConnection {
+                        /**
+                         * 1.定义数据库驱动
+                         * 2.数据库连接地址
+                         * 3.数据库连接用户名
+                         * 4.数据库连接密码
+                         * 5.声明数据库连接对象
+                         */
+                        private static final String DBDRIVER ="com.mysql.cj.jdbc.Driver";
+                        private static final String DBURL="jdbc:mysql://localhost:3306/hospital";
+                        private static final String DBUSER="CaoQian";
+                        private static final String DBPASSWORD="cq2227558856";
+                        private Connection conn=null;
+                        /**
+                         * 构造函数:
+                         * 1.加载驱动
+                         * 2.取得数据库连接
+                         */
+                        public DatabaseConnection() throws Exception{
+                            try{
+                                Class.forName(DBDRIVER);
+                                this.conn=DriverManager.getConnection(DBURL,DBUSER,DBPASSWORD);
+                            }catch (Exception e){
+                                throw e;
+                            }
+                        }
+                        /**
+                         * 连接数据库
+                         */
+                        public Connection getConnection(){
+                            return this.conn;
+                        }
+                        /**
+                         * 关闭数据库
+                         */
+                        public void close() throws  Exception{
+                            if(this.conn!=null){
+                                try{
+                                    this.conn.close();
+                                }catch (Exception e){
+                                    throw e;
+                                }
+                            }
+                        }
+                    }
+
+
+
+
+41.                 
