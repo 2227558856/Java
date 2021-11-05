@@ -1729,4 +1729,46 @@
 
 
 
-39.                 
+39.                 package hospital.dao;
+
+                    import hospital.vo.*;
+
+                    import java.util.List;
+
+                    /**
+                     * @author 数据库操作接口
+                     */
+                    public interface PatientDao {
+                        /**
+                         * 添加病人数据
+                         * @param patient
+                         * @return
+                         * @throws Exception
+                         * 返回true or false,在方法内完成对patient的写入数据库操作并判断是否成功
+                         */
+                        boolean addPatient(Patient patient) throws Exception;
+
+                        /**
+                         * 按照id删除病人数据
+                         *
+                         * @param id
+                         * @return
+                         * @throws Exception
+                         * 返回true or false判断是否成功
+                         */
+                        boolean deletePatient(String id) throws Exception;
+
+                        /**
+                         * 按照key查找病人数据(id,姓名,年龄,病症,科室)
+                         *
+                         * @param key
+                         * @return
+                         * @throws Exception 返回所有key对应的病人数据,存在List中
+                         */
+                        List<Patient> findPatient(String key) throws Exception;
+                    }
+
+
+
+
+40.                 
