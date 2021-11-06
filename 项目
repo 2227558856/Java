@@ -395,3 +395,67 @@ public class DaoFactory {
 
 
 6.
+package hospital.test;
+
+import hospital.factory.DaoFactory;
+import hospital.vo.Patient;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.Scanner;
+
+/**
+ * @author 测试功能
+ */
+public class Test {
+    public static void main(String[] args) throws Exception{
+        //添加操作
+        Patient patient=new Patient();
+        patient.setId("2010301");
+        patient.setName("小灵");
+        patient.setAge("20");
+        patient.setDisease("腿疼");
+        patient.setPart("骨科");
+        DaoFactory.getPatientDaoInstance().addPatient(patient);
+
+        //删除操作
+        System.out.println("请输入要删除的病人身份证号:");
+        Scanner scan=new Scanner(System.in);
+        String id=scan.next();
+        DaoFactory.getPatientDaoInstance().deletePatient(id);
+
+        //任意查找操作
+        System.out.println("请输入要查找的病人信息:");
+        scan=new Scanner(System.in);
+        String key=scan.next();
+        List<Patient> patientWho=DaoFactory.getPatientDaoInstance().findPatient(key);
+        Iterator<Patient> iterator = patientWho.iterator();
+        while (iterator.hasNext()) {
+            Patient p = iterator.next();
+            System.out.println(p.getId() + "  " + p.getName()
+                    + "  " + p.getAge()+"  "+p.getDisease()+"  "+p.getPart());
+        }
+
+        //按身份证号查找操作
+        System.out.println("请输入要查找的病人身份证号:");
+        scan=new Scanner(System.in);
+        id=scan.next();
+        Patient patientId=DaoFactory.getPatientDaoInstance().findPatientById(id);
+        System.out.println(patientId.getId() + "  " + patientId.getName()
+                + "  " + patientId.getAge()+"  "+patientId.getDisease()+"  "+patientId.getPart());
+
+        //显示病人列表
+        System.out.println("所有病人信息如下:");
+        List<Patient> patientAll=DaoFactory.getPatientDaoInstance().findAll();
+        iterator = patientAll.iterator();
+        while (iterator.hasNext()) {
+            Patient p = iterator.next();
+            System.out.println(p.getId() + "  " + p.getName()
+                    + "  " + p.getAge()+"  "+p.getDisease()+"  "+p.getPart());
+        }
+    }
+}
+
+
+
+7.
