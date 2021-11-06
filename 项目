@@ -262,3 +262,60 @@ public class PatientDaoProxy implements PatientDao{
 
 
 3.
+package hospital.dao;
+
+import hospital.vo.*;
+
+import java.util.List;
+
+/**
+ * @author 数据库操作接口
+ */
+public interface PatientDao {
+    /**
+     * 添加病人数据
+     * @param patient
+     * @return
+     * @throws Exception
+     * 返回true or false,在方法内完成对patient的写入数据库操作并判断是否成功
+     */
+    boolean addPatient(Patient patient) throws Exception;
+
+    /**
+     * 按照id删除病人数据
+     *
+     * @param id
+     * @return
+     * @throws Exception
+     * 返回true or false判断是否成功
+     */
+    boolean deletePatient(String id) throws Exception;
+
+    /**
+     * 按照key查找病人数据(姓名,年龄,病症,科室)
+     *
+     * @param key
+     * @return返回所有key对应的病人数据,存在List中
+     * @throws Exception
+     */
+    List<Patient> findPatient(String key) throws Exception;
+
+    /**
+     * 按照id查找病人数据
+     * @param id
+     * @return返回id对应的唯一病人数据
+     * @throws Exception
+     */
+    Patient findPatientById(String id) throws Exception;
+
+    /**
+     * 查询所有数据
+     * @return 所有数据的列表
+     * @throws Exception
+     */
+    List<Patient> findAll() throws Exception;
+}
+
+
+
+4.
