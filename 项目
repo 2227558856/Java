@@ -151,3 +151,114 @@ public class PatientDaoImpl implements PatientDao{
 
 
 
+2.
+package hospital.dao.proxy;
+
+import java.util.List;
+import java.util.Objects;
+
+import hospital.vo.Patient;
+import hospital.dao.PatientDao;
+import hospital.dao.impl.PatientDaoImpl;
+import hospital.dbc.DatabaseConnection;
+
+/**
+ * @author 代理接口
+ * 负责数据库的打开和关闭及调用真实实现类对象操作：
+ */
+public class PatientDaoProxy implements PatientDao{
+    private DatabaseConnection dbc=null;
+    private PatientDao dao=null;
+
+    /**
+     * 构造函数,实例化连接，同时实例化dao对象
+     */
+    public PatientDaoProxy() throws Exception{
+        // 连接数据库
+        this.dbc=new DatabaseConnection();
+        //实例化真实主题类
+        this.dao=new PatientDaoImpl(this.dbc.getConnection());
+    }
+
+    @Override
+    public boolean addPatient(Patient patient) throws Exception{
+        try{
+            //在新加入的病人id不存在的情况下才能加入(id是唯一的)
+            Patient patientA=this.dao.findPatientById(patient.getId());
+            if(Objects.equals(patientA.getId(), "0")){
+                System.out.println("添加成功!");
+                this.dao.addPatient(patient);
+                return true;
+            }
+        }catch (Exception e){
+            throw e;
+        }finally {
+            this.dbc.close();
+        }
+        System.out.println("添加失败!");
+        return false;
+    }
+
+    @Override
+    public boolean deletePatient(String id) throws Exception{
+        try{
+            //在要删除的病人id存在的情况下才能删除
+            Patient patientB=this.dao.findPatientById(id);
+            if(!Objects.equals(patientB.getId(), "0")){
+                System.out.println("删除成功!");
+                this.dao.deletePatient(id);
+                return true;
+            }
+        }catch (Exception e){
+            throw e;
+        }finally {
+            this.dbc.close();
+        }
+        System.out.println("删除失败!");
+        return false;
+    }
+
+    @Override
+    public List<Patient> findPatient(String key) throws Exception{
+        List<Patient> all=null;
+        try{
+            all=this.dao.findPatient(key);
+        }catch (Exception e){
+            throw e;
+        }finally {
+            this.dbc.close();
+        }
+        return all;
+    }
+
+    @Override
+    public Patient findPatientById(String id) throws Exception{
+        Patient patient=null;
+        try{
+            patient=this.dao.findPatientById(id);
+        }catch (Exception e){
+            throw e;
+        }finally {
+            this.dbc.close();
+        }
+        return patient;
+    }
+    @Override
+    public List<Patient> findAll() throws Exception{
+        List<Patient> all=null;
+        try{
+            all=this.dao.findAll();
+        }catch (Exception e){
+            throw e;
+        }finally {
+            this.dbc.close();
+        }
+        return all;
+    }
+}
+
+
+
+
+
+3.
