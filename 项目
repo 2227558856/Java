@@ -459,3 +459,45 @@ public class Test {
 
 
 7.
+package hospital.vo;
+
+/**
+ * @author 定义patient信息
+ */
+public class Patient {
+    private String id;
+    private String name;
+    private String age;
+    private String disease;
+    private String part;
+    public void setId(String id){
+        this.id=id;
+    }
+    public String getId(){
+        return id;
+    }
+    public void setName(String name){
+        this.name=name;
+    }
+    public String getName(){
+        return name;
+    }
+    public void setAge(String age){
+        this.age=age;
+    }
+    public String getAge(){
+        return age;
+    }
+    public void setDisease(String disease){
+        this.disease=disease;
+    }
+    public String getDisease(){
+        return disease;
+    }
+    public void setPart(String part){
+        this.part=part;
+    }
+    public String getPart(){
+        return part;
+    }
+}
