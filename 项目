@@ -1,0 +1,153 @@
+一.Java根据DAO接口连接数据库,实现用户数据的增删查
+
+1.              
+package hospital.dao.impl;
+
+import java.sql.*;
+import hospital.dao.PatientDao;
+import hospital.vo.Patient;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+/**
+ * @author 实现接口
+ * 实现接口中定义的方法
+ */
+public class PatientDaoImpl implements PatientDao{
+    /**
+     * 1.定义数据库连接对象
+     * 2.定义数据库操作对象
+     */
+    private Connection conn=null;
+    private PreparedStatement pstmt=null;
+
+    /**
+     * 构造函数
+     * @param conn
+     */
+    public PatientDaoImpl(Connection conn){
+        this.conn=conn;
+    }
+
+    @Override
+    public boolean addPatient(Patient patient) throws Exception{
+        String sql = "INSERT INTO patient (id,name,age,disease,part) VALUES (?,?,?,?,?)";
+        //将patient中的数据放入pstmt中
+        this.pstmt = this.conn.prepareStatement(sql);
+        this.pstmt.setString(1, patient.getId());
+        this.pstmt.setString(2, patient.getName());
+        this.pstmt.setString(3, patient.getAge());
+        this.pstmt.setString(4, patient.getDisease());
+        this.pstmt.setString(5, patient.getPart());
+        //若更新记录行数大于0,即添加成功,修改flag
+        if(this.pstmt.executeUpdate()>0) {
+            return true;
+        }
+        this.pstmt.close();
+        return false;
+    }
+
+    @Override
+    public boolean deletePatient(String id) throws Exception{
+        int flag=0;
+        String sql="DELETE FROM patient WHERE id LIKE ?";
+        this.pstmt = this.conn.prepareStatement(sql);
+        this.pstmt.setString(1,id);
+        ////flag接收方法的返回值，为0 表示删除失败
+        flag=this.pstmt.executeUpdate();
+        if(flag>0) {
+            return true;
+        }
+        this.pstmt.close();
+        return false;
+    }
+
+    @Override
+    public List<Patient> findPatient(String key) throws Exception{
+        List<Patient> all=new ArrayList<Patient>();
+        //设置查询关键字
+        String sql="SELECT id,name,age,disease,part FROM patient WHERE name LIKE ? OR age LIKE ? OR disease LIKE ? OR part LIKE ?";
+        this.pstmt=this.conn.prepareStatement(sql);
+        this.pstmt.setString(1,"%"+key+"%");
+        this.pstmt.setString(2,"%"+key+"%");
+        this.pstmt.setString(3,"%"+key+"%");
+        this.pstmt.setString(4,"%"+key+"%");
+        //执行查询操作
+        ResultSet rs=this.pstmt.executeQuery();
+        Patient patient=null;
+        //依次取出符合条件的每条数据,将数据存入List
+        while(rs.next()){
+            patient=new Patient();
+            patient.setId(rs.getString(1));
+            patient.setName(rs.getString(2));
+            patient.setAge(rs.getString(3));
+            patient.setDisease(rs.getString(4));
+            patient.setPart(rs.getString(5));
+            all.add(patient);
+        }
+        this.pstmt.close();
+        return all;
+    }
+
+    @Override
+    public Patient findPatientById(String id) throws Exception{
+        Patient patient=null;
+        //设置查询关键字
+        String sql="SELECT id,name,age,disease,part FROM patient WHERE id LIKE ?";
+        this.pstmt=this.conn.prepareStatement(sql);
+        pstmt.setString(1,id);
+        //执行查询操作
+        ResultSet rs=pstmt.executeQuery();
+        //如果查到id,放入对应数据
+        if(rs.next()){
+            patient=new Patient();
+            patient.setId(rs.getString(1));
+            patient.setName(rs.getString(2));
+            patient.setAge(rs.getString(3));
+            patient.setDisease(rs.getString(4));
+            patient.setPart(rs.getString(5));
+        }
+        //否则,将patient设为0,0,0,0,0
+        else{
+            patient=new Patient();
+            patient.setId("0");
+            patient.setName("0");
+            patient.setAge("0");
+            patient.setDisease("0");
+            patient.setPart("0");
+        }
+        this.pstmt.close();
+        return patient;
+    }
+
+    @Override
+    public List<Patient> findAll() throws Exception{
+        List<Patient> all=new ArrayList<Patient>();
+        //设置查询关键字
+        String sql="SELECT id,name,age,disease,part FROM patient";
+        this.pstmt=this.conn.prepareStatement(sql);
+        //执行查询操作
+        ResultSet rs=this.pstmt.executeQuery();
+        Patient patient=null;
+        //依次取出符合条件的每条数据,将数据存入List
+        while(rs.next()){
+            patient=new Patient();
+            patient.setId(rs.getString(1));
+            patient.setName(rs.getString(2));
+            patient.setAge(rs.getString(3));
+            patient.setDisease(rs.getString(4));
+            patient.setPart(rs.getString(5));
+            all.add(patient);
+        }
+        this.pstmt.close();
+        return all;
+    }
+}
+
+
+
+
+
+
